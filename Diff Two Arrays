@@ -1,0 +1,14 @@
+function compareArr(lookFor, inArr, addTo) {
+  for (let i = 0; i < lookFor.length; i++) {
+    !inArr.includes(lookFor[i]) && addTo.push(lookFor[i]); 
+  }
+}
+
+function diffArray(arr1, arr2) {
+  const newArr = [];
+  compareArr(arr1, arr2, newArr);
+  compareArr(arr2, arr1, newArr);
+  return newArr;
+}
+
+console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));
