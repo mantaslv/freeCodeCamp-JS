@@ -1,0 +1,20 @@
+function whatIsInAName(collection, source) {
+  //console.log(source[Object.keys(source)]);
+  //const sourceKeys = Object.keys(source);
+  /*return collection.filter(obj => sourceKeys
+    .map(key => obj.hasOwnProperty(key) && obj[key] === source[key])
+    .reduce((a, b) => a && b))*/
+    //var y = collection[i][obj] === source[value];
+  var arr = [];
+  for (let value in source) {
+    for (let i = 0; i < collection.length; i++) {
+      for (let obj in collection[i]) {
+        console.log(value, "--", obj)
+        console.log(source[value], "--", collection[i][obj])
+      }
+    }
+  }
+  return arr;
+}
+
+console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
