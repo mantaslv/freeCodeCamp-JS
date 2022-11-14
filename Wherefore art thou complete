@@ -1,0 +1,31 @@
+function whatIsInAName(collection, source) {
+  
+var arr = [];
+
+for (let obj in collection) {
+  let andExist = true;
+    for (let value in source) {
+      let orExist = false;
+      for (let pair in collection[obj]) {
+        //console.log(value, ":", source[value], "===", pair, ":", collection[obj][pair]);
+        if (source[value] === collection[obj][pair] && value === pair) {
+          orExist = orExist || true;
+        } else {
+          orExist = orExist || false;
+        }
+      }
+      //console.log(orExist);
+      //console.log("-----------------");
+      andExist = andExist && orExist;
+    }
+    if (andExist === true) {
+      arr.push(collection[obj]);
+    }
+    //console.log("-----------------");
+  }
+  return arr;
+}
+
+console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }));
+
+console.log(whatIsInAName([{ "apple": 1, "bat": 2 }, { "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }], { "apple": 1, "bat": 2 }))
